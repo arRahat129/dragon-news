@@ -13,10 +13,10 @@ export async function proxy(request) {
 
     // const isLoggedIn = true;
     
-    if(session){
-        return NextResponse.next();
+    if(!session){
+        // return NextResponse.next();
+        return NextResponse.redirect(new URL('/login', request.url));
     }
-    return NextResponse.redirect(new URL('/login', request.url))
 }
 
 export const config = {
